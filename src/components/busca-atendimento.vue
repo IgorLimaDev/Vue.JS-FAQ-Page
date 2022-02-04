@@ -1,6 +1,11 @@
 <template>
   <div id="busca_atendimento">
-Busca de atendimento
+
+	  <div class="app-wrapper">
+	  	<h1 class="titulo-central">Central de Atendimento</h1>
+		<h3 class="subtitulo-central">Como podemos te ajudar?</h3>
+	  </div>
+
   </div>
 </template>
 

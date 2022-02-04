@@ -4,14 +4,17 @@
 
 <template>
   <div id="app">
-  <!-- the router outlet, where all matched components would ber viewed -->
-  oi
+
+  <!-- Router view para controlar a navegação pelas rotas -->
   <router-view></router-view>
 
-<a href="#" v-bind:click="navigateInicio">Inicio</a>
 
   </div>
+
+
 </template>
+
+
 
 <script>
 export default {

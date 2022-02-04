@@ -5,6 +5,9 @@ import App from './App.vue'
 import busca_atendimento from './components/busca-atendimento.vue'
 import Inicio from './components/Inicio'
 
+import "./assets/css/styles.css"
+import "./assets/css/styles.mobile.css"
+
 Vue.use(VueRouter)
 
 const routes = [
