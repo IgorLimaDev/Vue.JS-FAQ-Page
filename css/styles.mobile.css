@@ -1,0 +1,17 @@
+/* Resolução de telas pequenas (Smartphone) */
+
+@media only screen and (max-width:480px) {
+    /* Botões de navegação do início */
+    a.btn-navegacao-central {
+        flex-basis: 35%;
+        margin-top: 20px;
+    }
+    .navegacao-wrapper {
+        text-align: center;
+        flex-wrap: wrap;
+    }
+    /* Botões de navegação da Busca de Atendimento */
+    .input-search-wrapper input {
+        width: 90%;
+    }
+}

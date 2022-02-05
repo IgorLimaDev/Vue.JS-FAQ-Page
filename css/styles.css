@@ -1,0 +1,152 @@
+/* Regras gerais */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.logo-neoassist {
+    text-align: right;
+    margin-top: 50px;
+    max-width: 1200px;
+}
+
+.logo-neoassist img {
+    width: 70px;
+}
+
+.app-wrapper {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.titulo-central {
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+}
+
+.subtitulo-central {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/* Regras para os links vermelhos de navegação (Início e Busca de Atendimento) */
+
+.navegacao-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Botões de navegação do início */
+
+.btn-navegacao-central {
+    text-align: center;
+    background-color: #dc3636;
+    width: 140px;
+    height: 100px;
+    padding: 15px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    margin: 0px 20px 0px 20px;
+    align-self: center;
+}
+
+.btn-navegacao-central:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-navegacao-central img {
+    display: block;
+    text-align: center;
+    width: 60px;
+    margin: auto;
+}
+
+
+/* Botões de navegação da Busca de Atendimento */
+
+.btn-navegacao-atendimento {
+    text-align: center;
+    width: 130px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    align-self: center;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 15px;
+}
+
+.btn-navegacao-atendimento:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.btn-navegacao-atendimento img {
+    background-color: #dc3636;
+    border-radius: 15px;
+    display: block;
+    text-align: center;
+    width: 130px;
+    padding: 30px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.btn-navegacao-atendimento:hover img {
+    background-color: #b42827;
+}
+
+#BuscaAtendimento h4 {
+    margin-bottom: 45px;
+}
+
+
+/* Regras Busca de Atendimento */
+
+.input-search-wrapper input {
+    background-color: #ebebeb;
+    outline: 0;
+    border: 0;
+    width: 30%;
+    padding: 20px;
+    border-radius: 20px;
+    padding-right: 50px;
+    margin-right: -50px;
+}
+
+.input-search-wrapper button {
+    border: 0;
+    outline: 0;
+}
+
+.input-search-wrapper {
+    margin-bottom: 80px;
+}
+
+.input-search-wrapper img {
+    width: 25px;
+    margin-top: -5px;
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.mobile.css" />
+    <title>Central de Atendimento</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div v-if="rotas.Inicio" id="Inicio" class="app-wrapper">
+            <h1 class="titulo-central">Central de Atendimento</h1>
+            <h3 class="subtitulo-central">Olá, sua compra foi feita em:</h3>
+
+            <div class="navegacao-wrapper">
+                <a href="javascript:void(0)" v-on:click="navegar('BuscaAtendimento')" class="btn-navegacao-central">
+                    <img src="img/online-icon.png" /> Loja Online
+                </a>
+                <a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-central">
+                    <img src="img/icon-fisica.png" /> Loja Física
+                </a>
+            </div>
+
+        </div>
+
+        <div v-cloak v-if="rotas.BuscaAtendimento" id="BuscaAtendimento">
+
+            <div class="app-wrapper">
+                <h1 class="titulo-central">Central de Atendimento</h1>
+                <h3 class="subtitulo-central">Como podemos te ajudar?</h3>
+
+                <div class="input-search-wrapper">
+                    <input placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
+                    <button type="submit"><img src="img/Search-icon.png" /></button>
+                </div>
+
+                <h4>Navegue pelos assuntos mais buscados:</h4>
+
+                <div class="navegacao-wrapper">
+                    <a href="javascript:void(0)" class="btn-navegacao-atendimento">
+                        <img src="img/cadastro-icon.png" /> Cadastro
+                    </a>
+                    <a href="javascript:void(0)" class="btn-navegacao-atendimento">
+                        <img src="img/entrega-icon.png" /> Entrega
+                    </a>
+                    <a href="javascript:void(0)" class="btn-navegacao-atendimento">
+                        <img src="img/troca-icon.png" /> Trocas
+                    </a>
+                    <a href="javascript:void(0)" class="btn-navegacao-atendimento">
+                        <img src="img/pedido-icon.png" /> Pedidos
+                    </a>
+                    <a href="javascript:void(0)" class="btn-navegacao-atendimento">
+                        <img src="img/produto-icon.png" /> Produtos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div v-cloak v-if="FAQ">
+            <div class="app-wrapper">
+                <h1 class="titulo-central">Central de Atendimento</h1>
+                <div class="faq-wrapper">
+                    <div class="faq-menu">
+                        <div class="input-search-wrapper">
+                            <input placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
+                            <button type="submit"><img src="img/Search-icon.png" /></button>
+                        </div>
+
+                        <h2>ASSUNTOS MAIS BUSCADOS</h2>
+                        <div class="faq-menu-itens">
+                            <tempate v-for="pergunta in questionario">
+                                <a class="categoria-link" href="javascript:void(0)">{{pergunta}}</a>
+                            </tempate>
+                        </div>
+                    </div>
+                    <div class="faq-perguntas">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="logo-neoassist">
+        <a href="https://www.neoassist.com/" target="_blank">
+            <img src="img/logo-neoassist.png" />
+        </a>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Carrega o VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Plugin de Rotas para VueJS -->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
