@@ -4,7 +4,32 @@
 	  <div class="app-wrapper">
 	  	<h1 class="titulo-central">Central de Atendimento</h1>
 		<h3 class="subtitulo-central">Como podemos te ajudar?</h3>
+
+		<div class="navegacao-wrapper">
+			<router-link :to="'busca_atendimento'" class="btn-navegacao-atendimento">
+				<img src="../assets/img/cadastro-icon.png"/>
+				Cadastro
+			</router-link>
+			<a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-atendimento">
+				<img src="../assets/img/entrega-icon.png"/>
+				Entrega
+			</a>
+			<a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-atendimento">
+				<img src="../assets/img/troca-icon.png"/>
+				Trocas
+			</a>
+			<a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-atendimento">
+				<img src="../assets/img/pedido-icon.png"/>
+				Pedidos
+			</a>
+			<a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-atendimento">
+				<img src="../assets/img/produto-icon.png"/>
+				Produtos
+			</a>
+		</div>
 	  </div>
+	
+
 
   </div>
 </template>

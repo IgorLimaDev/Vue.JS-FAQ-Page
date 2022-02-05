@@ -10,21 +10,12 @@
 
 
   </div>
-
-
 </template>
-
 
 
 <script>
 export default {
   name: 'app',
-  methods: {
-	  navigateInicio: function() {
-		  console.log("disparou");
-		  router.push({ path: 'busca_atendimento' })
-	  }
-  } 
 	
 }
 

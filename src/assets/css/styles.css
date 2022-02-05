@@ -63,3 +63,26 @@ body {
     width: 60px;
     margin: auto;
 }
+
+.btn-navegacao-atendimento {
+    text-align: center;
+    width: 130px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    align-self: center;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-navegacao-atendimento img {
+    background-color: #dc3636;
+    border-radius: 15px;
+    display: block;
+    text-align: center;
+    width: 60px;
+    padding: 25px;
+    margin: auto;
+    margin-bottom: 10px;
+}
