@@ -199,36 +199,27 @@
                     <div class="chat-atendente">
                         Leonardo Barbosa
                     </div>
+                    <span class="disclaimer-chat"><span>!</span> Dica: entre com alguma pergunta presente no FAQ e terá uma resposta personalizada.</span>
                 </div>
                 <div class="chat-body">
-                    <div class="mensagem mensagem-eu">
-                        <div class="mensagem-texto">Qual o prazo de entrega?</div>
-                        <div class="mensagem-data-hora">Felipe em 26/01/2018 às 11:56:18</div>
-                    </div>
-                    <div class="mensagem mensagem-oposto">
-                        <div class="mensagem-texto">Felipe, obrigado por aguardar. Você está sendo transferido para um operador. O Número de seu protocolo é 302265.</div>
-                        <div class="mensagem-data-hora">Sistema em 26/01/2018 às 11:57:18</div>
-                    </div>
+                    <template v-for="mensagem in chat">
+						<div v-bind:class="'mensagem mensagem-' + mensagem.posicao">
+							<div class="mensagem-texto">{{mensagem.mensagem}}</div>
+							<div class="mensagem-data-hora">{{mensagem.autor}} {{mensagem.datahora}}</div>
+						</div>
+					</template>
 
-                    <div class="mensagem mensagem-oposto">
-                        <div class="mensagem-texto">Olá Felipe, o prazo de entrega para a região sudeste tem previsão de no máximo 07 dias úteis.</div>
-                        <div class="mensagem-data-hora">Leonardo Barbosa em 26/01/2018 às 11:57:18</div>
-                    </div>
 
-                    <div class="mensagem mensagem-eu">
-                        <div class="mensagem-texto">Obrigado</div>
-                        <div class="mensagem-data-hora">Felipe em 26/01/2018 às 11:57:18</div>
-                    </div>
 
                 </div>
                 <div class="chat-mensagem-form">
-                    <input type="text" placeholder="Envie uma mensagem..." />
+                    <input type="text" class="msg-chat" v-on:keyup.enter="falarChat('Felipe', $event.target.value, 'eu')" placeholder="Envie uma mensagem..." />
                     <a href="javascript:void(0)">
                         <label style="display: block;text-align: center;"><img src="img/anexo.png" />
 						<input type="file" name="anexo-chat" style="display:none;"/></label>
                     </a>
                     <a href="javascript:void(0)"><img src="img/emoji.png" /></a>
-                    <input type="submit" value="OK" />
+                    <input type="submit" value="OK" v-on:click="falarChat" />
                 </div>
                 <div class="chat-footer">
                     <a class="link-finalizar-conversa" href="javascript:void(0)"><img src="img/icone-sair.png" /> FINALIZAR CONVERSA</a>

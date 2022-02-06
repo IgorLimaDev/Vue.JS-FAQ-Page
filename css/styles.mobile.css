@@ -46,10 +46,10 @@
         height: 100%;
     }
     .chat-header {
-        height: 90px;
+        height: 110px;
     }
     .chat-body {
-        height: calc(80% - 95px);
+        height: calc(80% - 110px);
     }
     .chat-mensagem-form {
         height: 6%;

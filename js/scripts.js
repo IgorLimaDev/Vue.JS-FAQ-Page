@@ -2,11 +2,11 @@
 var questionario = [{
         categoria: "Cadastro",
         questoes: [
-            { titulo: "Como me cadastrar no site?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labiquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "Como me cadastrar no site?", conteudo: "Clique no botão de \"Entrar\" na barra de menu superior direito do site e entre com seu usuário e senha nos campos informados." },
 
-            { titulo: "Como recupero minha senha?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaesunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "Como recupero minha senha?", conteudo: "Na tela de login, clique no link \"Esqueci minha senha\", após isto, informe o email cadastrado em sua conta que você receberá um email de redefinição de senha." },
 
-            { titulo: "É possível comprar no site sem me cadastrar?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doe et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborcommodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
+            { titulo: "É possível comprar no site sem me cadastrar?", conteudo: "Você pode realizar todo o processo de carrinho de compras e checkout sem a necessidade de realizar um cadastro, porém, no checkout, você terá que informar todos os seus dados necessários para conclusão da compra." }
         ],
         ativa: true,
         visivelFAQ: true
@@ -14,11 +14,11 @@ var questionario = [{
     {
         categoria: "Entregas",
         questoes: [
-            { titulo: "Qual o prazo médio da entrega?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proid." },
+            { titulo: "Qual o prazo médio da entrega?", conteudo: "De 5 à 10 dias úteis." },
 
-            { titulo: "Como mudo o endereço de entrega?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip eidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "Como mudo o endereço de entrega?", conteudo: "Entre no seu perfil clicando em \"Minha conta\", depois clique no item \"Endereços de entrega\" no menu lateral esquerdo. Após isto, clique em \"Alterar endereço\" no endereço desejado. " },
 
-            { titulo: "Disponível para todo brasil?", conteudo: "Lorem ipsum doloet dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
+            { titulo: "Disponível para todo brasil?", conteudo: "Todos os produtos estão disponíveis para entrega em todo o brasil." }
         ],
         ativa: false,
         visivelFAQ: true
@@ -26,9 +26,9 @@ var questionario = [{
     {
         categoria: "Trocas",
         questoes: [
-            { titulo: "Onde solicito a troca?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut le irure dolor in ecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "Onde solicito a troca?", conteudo: "Entre no link \"Minhas Compras\" no menu superior, após isto, clique em \"Detalhes da compra\" na compra que você deseja realizar a troca, após isto, clique em \"Solicitar Troca de Produto\"." },
 
-            { titulo: "Quanto tempo demora para realizar uma troca?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.." },
+            { titulo: "Quanto tempo demora para realizar uma troca?", conteudo: "De 5 à 10 dias úteis." },
 
         ],
         ativa: false,
@@ -37,7 +37,7 @@ var questionario = [{
     {
         categoria: "Pedidos",
         questoes: [
-            { titulo: "Realizei um pedido, mas cancelei, terei reemboso?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "Realizei um pedido, mas cancelei, terei reemboso?", conteudo: "Se o envio do produto ainda não foi realizado, o reembolso acontecerá de 3 à 7 dias úteis. Pode variar de acordo com o banco, em caso de cartão de crédito. Compras no boleto serão reembolsados como Créditos da Loja." },
 
         ],
         ativa: false,
@@ -46,11 +46,11 @@ var questionario = [{
     {
         categoria: "Produtos",
         questoes: [
-            { titulo: "Onde encontro as especificações do produto?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "Onde encontro as especificações do produto?", conteudo: "Dentro da página de produto, role até abaixo das fotos do produto e clique em \"Detalhes do Produto\". " },
 
-            { titulo: "É possível encomendar um produto personalizado?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboaute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { titulo: "É possível encomendar um produto personalizado?", conteudo: "Não, infelizmente não trabalhamos com produtos personalizados." },
 
-            { titulo: "Porque nem todos os produtos estão disponíveis para compra?", conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." }
+            { titulo: "Porque nem todos os produtos estão disponíveis para compra?", conteudo: "Alguns produtos estão disponíveis na loja, porém ainda não foram lançados, mas você pode realizar a pré-compra deles, reservando-os dentro da página de produto, que assim que o produto estiver disponível, ele será enviado para o endereço cadastrado em sua conta." }
         ],
         ativa: false,
         visivelFAQ: true
@@ -61,6 +61,32 @@ var questionario = [{
         visivelFAQ: false
     }
 ]
+
+var chat = [{
+        autor: "Felipe",
+        mensagem: "Qual o prazo de entrega?",
+        datahora: "em 26/01/2018 às 11:56:18",
+        posicao: "eu"
+    },
+    {
+        autor: "Sistema",
+        mensagem: "Felipe, obrigado por aguardar. Você está sendo transferido para um operador. O Número de seu protocolo é 302265.",
+        datahora: "em 26/01/2018 às 11:57:18",
+        posicao: "oposto"
+    },
+    {
+        autor: "Leonardo Barbosa",
+        mensagem: "Olá Felipe, o prazo de entrega para a região sudeste tem previsão de no máximo 07 dias úteis.",
+        datahora: "em 26/01/2018 às 11:57:18",
+        posicao: "oposto"
+    },
+    {
+        autor: "Felipe",
+        mensagem: "Obrigado",
+        datahora: "em 26/01/2018 às 11:57:18",
+        posicao: "eu"
+    },
+];
 
 var paginas = {
     'Inicio': true,
@@ -86,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
             podeValidar: false,
             sucessoForm: false,
             chatAtivo: false,
+            chat: chat,
             form: {
                 assunto: "",
                 nome: "",
@@ -93,7 +120,53 @@ document.addEventListener("DOMContentLoaded", function() {
                 mensagem: ""
             }
         },
+
         methods: {
+            //Insere uma fala no sistema de chat
+            falarChat: function(quem, mensagem, posicao) {
+                var d = new Date();
+                this.chat.push({
+                    autor: quem,
+                    mensagem: mensagem,
+                    datahora: "em " + d.toLocaleDateString() + " às " + d.toLocaleTimeString(),
+                    posicao: posicao
+                });
+                document.querySelector(".msg-chat").value = "";
+                setTimeout(function() { //delay necessário para poder dar tempo do vue processar a mensagem e fazer o scroll
+                    var chatbody = document.querySelector(".chat-body").lastChild.lastChild;
+                    chatbody.scrollIntoView({ behavior: 'smooth' });
+                }, 10);
+                if (posicao == "eu") {
+                    app.respostaBot();
+                }
+            },
+
+            //Simula uma resposta do bot
+            respostaBot: function() {
+                setTimeout(function() {
+                    var ultimaMensagem = this.chat[this.chat.length - 1].mensagem;
+                    var resposta = "";
+                    for (i = 0; i < questionario.length; i++) {
+                        var questoesLength = 0;
+                        try {
+                            questoesLength = questionario[i].questoes.length;
+                        } catch (e) {
+                            questoesLength = 0;
+                        }
+                        for (j = 0; j < questoesLength; j++) {
+                            if (questionario[i].questoes[j].titulo == ultimaMensagem) {
+                                resposta = questionario[i].questoes[j].conteudo;
+                            }
+                        }
+                    }
+                    if (resposta !== "") {
+                        app.falarChat("Sistema", resposta, "oposto");
+                    } else {
+                        app.falarChat("Sistema", "Desculpe, não entendi o que você quis dizer. Tente outra mensagem.", "oposto");
+                    }
+                }, 300);
+            },
+
             //Mostra/esconde o chat de suporte
             ativarChat: function() {
                 this.chatAtivo = !this.chatAtivo;
@@ -172,6 +245,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (this.questionario[cat].categoria == categoria) {
                         this.questionario[cat].ativa = true;
                     }
+                }
+                if (window.innerWidth < 481) {
+                    document.querySelector(".perguntas-wrapper").scrollIntoView({ behavior: 'smooth' });
                 }
 
             }
