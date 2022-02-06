@@ -17,6 +17,7 @@
 
     <div id="app">
 
+        <!-- Página inicial com os links de navegação iniciais -->
         <div v-if="rotas.Inicio" id="Inicio" class="app-wrapper">
             <h1 class="titulo-central">Central de Atendimento</h1>
             <h3 class="subtitulo-central">Olá, sua compra foi feita em:</h3>
@@ -32,6 +33,7 @@
 
         </div>
 
+        <!-- Página de Busca Inteligente -->
         <div v-cloak v-if="rotas.BuscaAtendimento" id="BuscaAtendimento">
 
             <div class="app-wrapper">
@@ -70,6 +72,7 @@
             </div>
         </div>
 
+        <!-- Página de FAQ, onde todas as questões são renderizadas -->
         <div v-cloak v-if="rotas.FAQ" id="FAQ">
             <div class="app-wrapper">
                 <h1 class="titulo-central">Central de Atendimento</h1>
@@ -87,14 +90,18 @@
                         <h2>ASSUNTOS MAIS BUSCADOS</h2>
                         <div class="faq-menu-itens">
                             <ul>
+                                <!-- Renderiza o menu de categorias do FAQ -->
                                 <li v-for="categoria in questionario" :key="categoria.categoria" v-if="categoria.visivelFAQ"><a class="categoria-link" href="javascript:void(0)" v-on:click="navegarFAQ(categoria.categoria)">{{categoria.categoria}}</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="faq-perguntas">
+                        <!-- Renderiza as categorias junto com as questões da base de dados do FAQ -->
                         <div class="perguntas-wrapper" v-for="categoria in questionario" :key="categoria.categoria" v-if="categoria.ativa">
 
                             <h2 class="titulo-categoria">{{categoria.categoria}}</h2>
+
+                            <!-- Renderiza as questões de determinada categoria -->
                             <div class="questao-wrapper" v-for="pergunta in categoria.questoes" :key="pergunta.titulo">
                                 <div class="menu-wrapper">
                                     <div v-on:click="toggleQuestao($event)" class="titulo-questao">{{pergunta.titulo}}</div>
@@ -202,6 +209,7 @@
                     <span class="disclaimer-chat"><span>!</span> Dica: entre com alguma pergunta presente no FAQ e terá uma resposta personalizada.</span>
                 </div>
                 <div class="chat-body">
+                    <!-- Renderiza as mensagens do chat, com as informações da base de dados de chat -->
                     <template v-for="mensagem in chat">
 						<div v-bind:class="'mensagem mensagem-' + mensagem.posicao">
 							<div class="mensagem-texto">{{mensagem.mensagem}}</div>

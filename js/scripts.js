@@ -1,15 +1,19 @@
 //Base de dados de questões do FAQ
 var questionario = [{
-        categoria: "Cadastro",
-        questoes: [
-            { titulo: "Como me cadastrar no site?", conteudo: "Clique no botão de \"Entrar\" na barra de menu superior direito do site e entre com seu usuário e senha nos campos informados." },
+        categoria: "Cadastro", //Categoria do FAQ, renderizada no menu lateral
+        questoes: [ //Base de questões de uma categoria
+            {
+                titulo: "Como me cadastrar no site?", //Título que aparece no topo expansível da questão
+                conteudo: //Conteúdo que aparece no painel expansível da questão
+                    "Clique no botão de \"Entrar\" na barra de menu superior direito do site e entre com seu usuário e senha nos campos informados."
+            },
 
             { titulo: "Como recupero minha senha?", conteudo: "Na tela de login, clique no link \"Esqueci minha senha\", após isto, informe o email cadastrado em sua conta que você receberá um email de redefinição de senha." },
 
             { titulo: "É possível comprar no site sem me cadastrar?", conteudo: "Você pode realizar todo o processo de carrinho de compras e checkout sem a necessidade de realizar um cadastro, porém, no checkout, você terá que informar todos os seus dados necessários para conclusão da compra." }
         ],
-        ativa: true,
-        visivelFAQ: true
+        ativa: true, //Controla se esta categoria está ativa atualmente, ou seja, mostrando as perguntas na tela
+        visivelFAQ: true //Configura se esta categoria é visível no FAQ
     },
     {
         categoria: "Entregas",
@@ -56,17 +60,17 @@ var questionario = [{
         visivelFAQ: true
     },
     {
-        categoria: "Atendimento via e-mail:",
+        categoria: "Atendimento via e-mail:", //Categoria que controla o formulário de E-mail para aparecer o lugar das questões
         ativa: false,
         visivelFAQ: false
     }
 ]
 
 var chat = [{
-        autor: "Felipe",
-        mensagem: "Qual o prazo de entrega?",
-        datahora: "em 26/01/2018 às 11:56:18",
-        posicao: "eu"
+        autor: "Felipe", //Autor da fala
+        mensagem: "Qual o prazo de entrega?", //Conteúdo da fala do chat
+        datahora: "em 26/01/2018 às 11:56:18", //Data-hora pré renderizados de demonstração
+        posicao: "eu" //Como a mensagem se comporta. "eu" significa mensagem que o usuário envia, "oposto" significa mensagem do sistema.
     },
     {
         autor: "Sistema",
@@ -94,25 +98,37 @@ var paginas = {
     'FAQ': false
 };
 
-var router = new VueRouter({})
-router.history.listen(function(a) {
-    console.log(a);
-});
-
 var app;
 document.addEventListener("DOMContentLoaded", function() {
     console.log("carregou");
     app = new Vue({
         el: '#app',
         data: {
+            //Controla a mensagem de erro no campo de busca do "Busca Inteligente"
             erroBusca: false,
+
+            //Controla a mensagem de erro no campo de busca do FAQ
             erroBuscaFAQ: false,
+
+            //Controla a navegação entre as páginas
             rotas: paginas,
+
+            //Base de dados do FAQ
             questionario: questionario,
+
+            //Controla se o formulário de Email pode mostrar as mensagens de erro
             podeValidar: false,
+
+            //Controla a mensagem de sucesso do formulário de Email
             sucessoForm: false,
+
+            //Controla se mostra/esconde o chat
             chatAtivo: false,
+
+            //Base de dados do sistema de chat
             chat: chat,
+
+            //Controla os campos do formulário para validação
             form: {
                 assunto: "",
                 nome: "",
@@ -246,9 +262,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         this.questionario[cat].ativa = true;
                     }
                 }
-                if (window.innerWidth < 481) {
-                    document.querySelector(".perguntas-wrapper").scrollIntoView({ behavior: 'smooth' });
-                }
+                setTimeout(function() {
+                    if (window.innerWidth < 481) {
+                        document.querySelector(".perguntas-wrapper").scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 50);
 
             }
         }
