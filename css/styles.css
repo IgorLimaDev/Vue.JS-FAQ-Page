@@ -12,6 +12,10 @@ body {
     display: none;
 }
 
+.br-mobile {
+    display: none;
+}
+
 #app {
     max-width: 1000px;
     margin: auto;
@@ -88,7 +92,9 @@ a.btn-chat {
 }
 
 .links-contato-links a {
-    margin-right: 15px;
+    display: block;
+    width: 100%;
+    text-align: right;
 }
 
 
@@ -307,7 +313,6 @@ a.categoria-link::after {
     font-weight: 500;
     font-size: 25px;
     cursor: pointer;
-    margin-bottom: 20px;
 }
 
 .questao-wrapper {

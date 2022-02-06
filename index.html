@@ -184,11 +184,11 @@
             </div>
             <div class="links-contato-links">
                 <a href="javascript:void(0)" v-on:click="navegar('FAQ');navegarFAQ('Atendimento via e-mail:')"><img src="img/icon-email.png" /></a>
-                <a href="javascript:void(0)" v-on:click="navegar('BuscaAtendimento')"><img src="img/icon-chat.png" /></a>
+                <a href="javascript:void(0)" v-on:click="ativarChat"><img src="img/icon-chat.png" /></a>
             </div>
         </div>
 
-        <div class="chat-flutuante" v-if="chatAtivo">
+        <div v-cloak class="chat-flutuante" v-if="chatAtivo">
             <div class="chat-wrapper">
                 <div class="chat-header">
                     <div class="chat-titulo">
