@@ -12,10 +12,21 @@ body {
     display: none;
 }
 
+#app {
+    max-width: 1000px;
+    margin: auto;
+}
+
 .logo-neoassist {
     text-align: right;
-    margin-top: 50px;
-    max-width: 1200px;
+    max-width: 1000px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 30px;
+    margin-bottom: 50px;
+    margin-top: 30px;
 }
 
 .logo-neoassist img {
@@ -41,6 +52,42 @@ body {
     font-weight: 400;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+a.btn-chat {
+    display: block;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background-color: red;
+    padding: 10px;
+    border-radius: 100%;
+}
+
+.contato-links {
+    display: flex;
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.links-contato-links {
+    display: flex;
+    width: 50%;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.disclaimer-footer {
+    width: 100%;
+    margin-right: 20px;
+}
+
+.links-contato-links a {
+    margin-right: 15px;
 }
 
 
@@ -126,11 +173,23 @@ body {
 
 /* Regras Busca de Atendimento */
 
+.erro-busca {
+    margin: auto;
+    margin-bottom: 40px;
+    color: #dc3636;
+    font-weight: 500;
+    margin-top: -35px;
+    background-color: rgba(220, 54, 54, 0.3);
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
 .input-search-wrapper input {
     background-color: #ebebeb;
     outline: 0;
     border: 0;
-    width: 30%;
+    width: 60%;
     padding: 20px;
     border-radius: 20px;
     padding-right: 50px;
@@ -149,4 +208,237 @@ body {
 .input-search-wrapper img {
     width: 25px;
     margin-top: -5px;
+}
+
+
+/* Regras para FAQ */
+
+.faq-wrapper {
+    display: flex;
+}
+
+.faq-menu {
+    width: 35%;
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.faq-perguntas {
+    display: inline-block;
+    width: 60%;
+}
+
+a.categoria-link {
+    background-color: #dc3636;
+    color: white;
+    display: block;
+    margin: 10px 0px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+}
+
+a.categoria-link:hover {
+    text-decoration: none;
+    background-color: #b42827;
+}
+
+.faq-menu-itens ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+a.categoria-link::after {
+    content: '›';
+    position: absolute;
+    right: 20px;
+    font-size: 45px;
+    top: 0;
+    margin: auto;
+    height: 100%;
+    line-height: 43px;
+}
+
+#FAQ .input-search-wrapper input {
+    padding: 15px;
+    margin: 10px 40px;
+    display: block;
+    border-radius: 10px;
+    padding-right: 40px;
+    margin-left: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+#FAQ .input-search-wrapper button {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    margin: auto;
+    top: 0;
+    background-color: transparent;
+}
+
+#FAQ .input-search-wrapper {
+    position: relative;
+}
+
+#FAQ h3 {
+    font-size: 19px;
+    text-align: left;
+    font-weight: 400;
+}
+
+#FAQ h1.titulo-central {
+    text-align: left;
+    margin-bottom: 70px;
+}
+
+#FAQ h2 {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.titulo-questao {
+    font-weight: 500;
+    font-size: 25px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.questao-wrapper {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.titulo-questao:before {
+    content: ' ';
+    background-image: url(../img/caret-right.png);
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-size: 100% 100%;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+.questao-wrapper.aberto .titulo-questao:before {
+    content: ' ';
+    background-image: url(../img/caret-down.png);
+}
+
+.conteudo-questao {
+    max-height: 0px;
+    overflow: hidden;
+    transition: ease 0.3s;
+}
+
+.questao-wrapper.aberto .conteudo-questao {
+    max-height: 700px;
+}
+
+.resposta-util {
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+.resposta-util a {
+    text-transform: uppercase;
+    padding: 5px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+}
+
+.resposta-util-sim {
+    background-color: #58b44f;
+}
+
+.resposta-util-nao {
+    background-color: #dc3636;
+}
+
+.msg-feedback-resposta .feedback-sim,
+.msg-feedback-resposta .feedback-nao {
+    display: none;
+}
+
+.msg-feedback-resposta .feedback-sim.aberto,
+.msg-feedback-resposta .feedback-nao.aberto {
+    display: block;
+}
+
+.resposta-util-sim[disabled],
+.resposta-util-nao[disabled] {
+    background-color: gray;
+    pointer-events: none;
+}
+
+.msg-feedback-resposta {
+    margin-top: 20px;
+}
+
+#FAQ .msg-feedback-resposta h3 {
+    font-weight: 500;
+}
+
+
+/* Regras do formulário de email */
+
+form.form-enviar-email {
+    text-align: left;
+}
+
+.form-enviar-email label {
+    display: block;
+    margin-top: 20px;
+}
+
+.campo-form {
+    width: 100%;
+    padding: 10px;
+    background-color: #ebebeb;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.error-label {
+    font-style: italic;
+    font-weight: 500;
+    color: #dc3636;
+}
+
+.form-enviar-email p {
+    margin-top: 20px;
+}
+
+.form-enviar-email input[type="submit"] {
+    background-color: #00a652;
+    color: white;
+    padding: 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.msg-sucesso-form .texto-mensagem {
+    background-color: #00a652;
+    color: white;
+    padding: 25px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.msg-sucesso-form a {
+    color: #dc3636;
+    font-weight: 500;
+}
+
+.msg-sucesso-form a img {
+    margin-right: 6px;
 }

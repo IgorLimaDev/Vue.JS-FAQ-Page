@@ -14,4 +14,17 @@
     .input-search-wrapper input {
         width: 90%;
     }
+    /* Regras mobile para o FAQ */
+    .faq-menu,
+    .faq-perguntas {
+        width: 100%;
+        display: block;
+    }
+    .faq-wrapper {
+        display: block;
+    }
+    #FAQ {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
