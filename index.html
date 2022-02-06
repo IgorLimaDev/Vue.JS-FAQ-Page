@@ -188,13 +188,13 @@
             </div>
         </div>
 
-        <div class="chat-flutuante">
+        <div class="chat-flutuante" v-if="chatAtivo">
             <div class="chat-wrapper">
                 <div class="chat-header">
                     <div class="chat-titulo">
-                        <div class="icone-chat-header"><img src="img/Chat_Icon_Button.png" /> </div>
-                        <div>Atendimento via Chat</div>
-                        <div class="fechar-chat">X</div>
+                        <div class="icone-chat-header"><img src="img/icone-topo-chat.png" /> </div>
+                        <div class="chat-titulo-topo">Atendimento via Chat</div>
+                        <div class="fechar-chat" v-on:click="ativarChat">X</div>
                     </div>
                     <div class="chat-atendente">
                         Leonardo Barbosa
@@ -223,7 +223,10 @@
                 </div>
                 <div class="chat-mensagem-form">
                     <input type="text" placeholder="Envie uma mensagem..." />
-                    <a href="javascript:void(0)"><img src="img/anexo.png" /></a>
+                    <a href="javascript:void(0)">
+                        <label style="display: block;text-align: center;"><img src="img/anexo.png" />
+						<input type="file" name="anexo-chat" style="display:none;"/></label>
+                    </a>
                     <a href="javascript:void(0)"><img src="img/emoji.png" /></a>
                     <input type="submit" value="OK" />
                 </div>
@@ -238,7 +241,7 @@
 
         </div>
 
-        <a href="javascript:void(0)" v-on:click="mudarRota" class="btn-chat">
+        <a href="javascript:void(0)" v-on:click="ativarChat" class="btn-chat">
             <img src="img/Chat_Icon_Button.png" />
         </a>
 

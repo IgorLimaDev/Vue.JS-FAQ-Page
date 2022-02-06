@@ -27,4 +27,31 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    /* Regras pro chat flutuante */
+    @media only screen and (max-width:480px) {
+        .chat-flutuante {
+            right: 0;
+            bottom: 90px;
+            width: 100%;
+            height: calc(100% - 90px);
+        }
+        .chat-wrapper {
+            height: 100%;
+        }
+        .chat-header {
+            height: 90px;
+        }
+        .chat-body {
+            height: calc(80% - 95px);
+        }
+        .chat-mensagem-form {
+            height: 6%;
+        }
+        .chat-mensagem-form input[type="text"] {
+            height: 100%;
+        }
+        .chat-footer {
+            height: 15%;
+        }
+    }
 }

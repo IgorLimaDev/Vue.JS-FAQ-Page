@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
             questionario: questionario,
             podeValidar: false,
             sucessoForm: false,
+            chatAtivo: false,
             form: {
                 assunto: "",
                 nome: "",
@@ -93,9 +94,14 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         methods: {
-            mudarRota: function() {
-                router.push('algumarota');
+            //Mostra/esconde o chat de suporte
+            ativarChat: function() {
+                this.chatAtivo = !this.chatAtivo;
             },
+
+            //Função para validar o formulário
+            //Faz um loop pelos objetos do formulário e verifica se tem 
+            //algum valor falso, se tiver, cancela o envio, senão, "envia"
             validarForm: function(ev) {
                 this.podeValidar = true;
                 ev.preventDefault();
@@ -114,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(el.target);
                 el.target.parentElement.parentElement.classList.toggle("aberto");
             },
+
             //Controla a navegação entre as diferentes partes da central de atendimento
             //A navegação é controlada pelo objeto "rotas", onde o item que possuir o valor
             //true é a parte (tela) ativa atualmente.
