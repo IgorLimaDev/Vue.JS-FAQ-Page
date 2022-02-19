@@ -38,7 +38,7 @@ body {
 }
 
 .app-wrapper {
-    margin-top: 150px;
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -173,7 +173,7 @@ a.btn-chat {
     background-color: #b42827;
 }
 
-#BuscaAtendimento h4 {
+.BuscaAtendimento h4 {
     margin-bottom: 45px;
 }
 
@@ -267,7 +267,7 @@ a.categoria-link::after {
     line-height: 43px;
 }
 
-#FAQ .input-search-wrapper input {
+.FAQ .input-search-wrapper input {
     padding: 15px;
     margin: 10px 40px;
     display: block;
@@ -278,7 +278,7 @@ a.categoria-link::after {
     font-size: 14px;
 }
 
-#FAQ .input-search-wrapper button {
+.FAQ .input-search-wrapper button {
     position: absolute;
     right: 10px;
     bottom: 0;
@@ -287,22 +287,22 @@ a.categoria-link::after {
     background-color: transparent;
 }
 
-#FAQ .input-search-wrapper {
+.FAQ .input-search-wrapper {
     position: relative;
 }
 
-#FAQ h3 {
+.FAQ h3 {
     font-size: 19px;
     text-align: left;
     font-weight: 400;
 }
 
-#FAQ h1.titulo-central {
+.FAQ h1.titulo-central {
     text-align: left;
     margin-bottom: 70px;
 }
 
-#FAQ h2 {
+.FAQ h2 {
     text-align: left;
     text-transform: uppercase;
     font-size: 22px;
@@ -388,7 +388,7 @@ a.categoria-link::after {
     margin-top: 20px;
 }
 
-#FAQ .msg-feedback-resposta h3 {
+.FAQ .msg-feedback-resposta h3 {
     font-weight: 500;
 }
 
@@ -432,12 +432,21 @@ form.form-enviar-email {
     border-radius: 5px;
 }
 
+.form-enviar-email textarea {
+    height: 200px;
+}
+
 .msg-sucesso-form .texto-mensagem {
     background-color: #00a652;
     color: white;
     padding: 25px;
     border-radius: 3px;
     margin-bottom: 15px;
+}
+
+.obrigatorio:before {
+    content: '* ';
+    color: #dc3636;
 }
 
 .msg-sucesso-form a {

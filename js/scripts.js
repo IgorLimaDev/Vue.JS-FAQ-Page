@@ -1,5 +1,5 @@
 //Base de dados de questões do FAQ
-var questionario = [{
+var questionarioDB = [{
         categoria: "Cadastro", //Categoria do FAQ, renderizada no menu lateral
         questoes: [ //Base de questões de uma categoria
             {
@@ -92,102 +92,140 @@ var chat = [{
     },
 ];
 
-var paginas = {
-    'Inicio': true,
-    'BuscaAtendimento': false,
-    'FAQ': false
-};
 
 var app;
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("carregou");
-    app = new Vue({
-        el: '#app',
-        data: {
-            //Controla a mensagem de erro no campo de busca do "Busca Inteligente"
-            erroBusca: false,
+    const PageInicio = {
+        template: document.getElementById("Inicio")
+    };
+    const PageBuscaAtendimento = {
+        template: document.getElementById("BuscaAtendimento"),
+        data() {
+            return {
+                //Controla a mensagem de erro no campo de busca do "Busca Inteligente"
+                erroBusca: false,
 
-            //Controla a mensagem de erro no campo de busca do FAQ
-            erroBuscaFAQ: false,
-
-            //Controla a navegação entre as páginas
-            rotas: paginas,
-
-            //Base de dados do FAQ
-            questionario: questionario,
-
-            //Controla se o formulário de Email pode mostrar as mensagens de erro
-            podeValidar: false,
-
-            //Controla a mensagem de sucesso do formulário de Email
-            sucessoForm: false,
-
-            //Controla se mostra/esconde o chat
-            chatAtivo: false,
-
-            //Base de dados do sistema de chat
-            chat: chat,
-
-            //Controla os campos do formulário para validação
-            form: {
-                assunto: "",
-                nome: "",
-                email: "",
-                mensagem: ""
             }
         },
-
         methods: {
-            //Insere uma fala no sistema de chat
-            falarChat: function(quem, mensagem, posicao) {
-                var d = new Date();
-                this.chat.push({
-                    autor: quem,
-                    mensagem: mensagem,
-                    datahora: "em " + d.toLocaleDateString() + " às " + d.toLocaleTimeString(),
-                    posicao: posicao
-                });
-                document.querySelector(".msg-chat").value = "";
-                setTimeout(function() { //delay necessário para poder dar tempo do vue processar a mensagem e fazer o scroll
-                    var chatbody = document.querySelector(".chat-body").lastChild.lastChild;
-                    chatbody.scrollIntoView({ behavior: 'smooth' });
-                }, 10);
-                if (posicao == "eu") {
-                    app.respostaBot();
+            //Simula a pesquisa de tópicos e mostra a mensagem de erro
+            pesquisarTopicos: function(el) {
+                console.log(el)
+                if (el.target.value == "") {
+                    this.erroBusca = false;
+                } else {
+                    this.erroBusca = true;
+                }
+            },
+            //Controla a navegação entre as categorias do FAQ, onde a categoria
+            //com a propriedade "ativa" que tenha o valor true é a categoria mostrada
+            //na tela atualmente.
+            //A única excessão é o formulário de cadastro, que terá o "visivelFAQ" igual a false
+            //para usar a mesma estrutura de navegação das questões, porém, renderizando o formulário de cadastro
+            navegarFAQ: function(categoria) {
+                router.push({ name: "FAQ", params: { categoria: categoria } });
+                setTimeout(function() {
+                    if (window.innerWidth < 481) {
+                        document.querySelector(".perguntas-wrapper").scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 50);
+
+            }
+        }
+    };
+    var PageFAQ = {
+
+        template: document.getElementById("FAQ"),
+        created() {
+            if (this.$route.params.categoria) {
+                this.navegarFAQ(this.$route.params.categoria);
+            } else {
+                this.navegarFAQ("Cadastro");
+            }
+        },
+        data() {
+            return {
+                questionario: questionarioDB,
+
+                //Controla a mensagem de erro no campo de busca do "Busca Inteligente"
+                erroBuscaFAQ: false,
+
+                //Controla a mensagem de sucesso do formulário de Email
+                sucessoForm: false,
+
+                //Controla se o formulário de Email pode mostrar as mensagens de erro
+                podeValidar: false,
+
+                //Controla se mostra ou esconde o formulário de contato
+                formAtivo: false,
+
+
+                //Controla os campos do formulário para validação
+                form: {
+                    assunto: "",
+                    nome: "",
+                    email: "",
+                    emailValido: false,
+                    mensagem: ""
+                }
+            }
+        },
+        methods: {
+            //Valida se o email digitado é um email válido
+            validarEmail() {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.form.email)) {
+                    this.form.emailValido = true;
+                } else {
+                    this.form.emailValido = false;
                 }
             },
 
-            //Simula uma resposta do bot
-            respostaBot: function() {
+            //Mostra o formulário de contato na área de FAQ
+            mostrarForm: function() {
+                for (cat in this.questionario) {
+                    this.questionario[cat].ativa = false;
+                }
+                this.formAtivo = true;
+            },
+
+            //Simula a pesquisa de tópicos e mostra a mensagem de erro
+            pesquisarTopicosFAQ: function(el) {
+                if (el.target.value == "") {
+                    this.erroBuscaFAQ = false;
+                } else {
+                    this.erroBuscaFAQ = true;
+                }
+            },
+            //Mostra ou esconde o conteúdo de alguma pergunta presente no FAQ
+            toggleQuestao: function(el) {
+                console.log(el.target);
+                el.target.parentElement.parentElement.classList.toggle("aberto");
+            },
+
+            //Mostra mensagem de feedback sobre a resposta do FAQ ser util ou não
+            respostaUtil: function(el, resposta) {
+                el.target.parentElement.querySelector(`.feedback-${resposta}`).classList.add("aberto");
+                el.target.parentElement.querySelector(`a:not(.resposta-util-${resposta})`).setAttribute("disabled", "disabled");
+            },
+
+            navegarFAQ: function(categoria) {
+                this.formAtivo = false;
+                for (cat in this.questionario) {
+                    this.questionario[cat].ativa = false;
+                }
+
+                for (cat in this.questionario) {
+                    if (this.questionario[cat].categoria == categoria) {
+                        this.questionario[cat].ativa = true;
+                    }
+                }
                 setTimeout(function() {
-                    var ultimaMensagem = this.chat[this.chat.length - 1].mensagem;
-                    var resposta = "";
-                    for (i = 0; i < questionario.length; i++) {
-                        var questoesLength = 0;
-                        try {
-                            questoesLength = questionario[i].questoes.length;
-                        } catch (e) {
-                            questoesLength = 0;
-                        }
-                        for (j = 0; j < questoesLength; j++) {
-                            if (questionario[i].questoes[j].titulo == ultimaMensagem) {
-                                resposta = questionario[i].questoes[j].conteudo;
-                            }
-                        }
+                    if (window.innerWidth < 481) {
+                        document.querySelector(".perguntas-wrapper").scrollIntoView({ behavior: 'smooth' });
                     }
-                    if (resposta !== "") {
-                        app.falarChat("Sistema", resposta, "oposto");
-                    } else {
-                        app.falarChat("Sistema", "Desculpe, não entendi o que você quis dizer. Tente outra mensagem.", "oposto");
-                    }
-                }, 300);
-            },
+                }, 50);
 
-            //Mostra/esconde o chat de suporte
-            ativarChat: function() {
-                this.chatAtivo = !this.chatAtivo;
             },
-
             //Função para validar o formulário
             //Faz um loop pelos objetos do formulário e verifica se tem 
             //algum valor falso, se tiver, cancela o envio, senão, "envia"
@@ -204,71 +242,97 @@ document.addEventListener("DOMContentLoaded", function() {
                 return false;
 
             },
-            //Mostra ou esconde o conteúdo de alguma pergunta presente no FAQ
-            toggleQuestao: function(el) {
-                console.log(el.target);
-                el.target.parentElement.parentElement.classList.toggle("aberto");
-            },
 
-            //Controla a navegação entre as diferentes partes da central de atendimento
-            //A navegação é controlada pelo objeto "rotas", onde o item que possuir o valor
-            //true é a parte (tela) ativa atualmente.
-            navegar: function(componente, categoriaFAQ) {
-                for (rota in this.rotas) {
-                    this.rotas[rota] = false;
-                }
-                this.rotas[componente] = true;
-                if (categoriaFAQ) {
-                    this.navegarFAQ(categoriaFAQ);
-                }
-            },
 
-            //Simula a pesquisa de tópicos e mostra a mensagem de erro
-            pesquisarTopicos: function(el) {
-                if (el.target.value == "") {
-                    this.erroBusca = false;
-                } else {
-                    this.erroBusca = true;
-                }
-            },
-
-            //Simula a pesquisa de tópicos e mostra a mensagem de erro, só que pra parte de FAQ
-            pesquisarTopicosFAQ: function(el) {
-                if (el.target.value == "") {
-                    this.erroBuscaFAQ = false;
-                } else {
-                    this.erroBuscaFAQ = true;
-                }
-            },
-
-            //Mostra mensagem de feedback sobre a resposta do FAQ ser util ou não
-            respostaUtil: function(el, resposta) {
-                el.target.parentElement.querySelector(`.feedback-${resposta}`).classList.add("aberto");
-                el.target.parentElement.querySelector(`a:not(.resposta-util-${resposta})`).setAttribute("disabled", "disabled");
-            },
-
-            //Controla a navegação entre as categorias do FAQ, onde a categoria
-            //com a propriedade "ativa" que tenha o valor true é a categoria mostrada
-            //na tela atualmente.
-            //A única excessão é o formulário de cadastro, que terá o "visivelFAQ" igual a false
-            //para usar a mesma estrutura de navegação das questões, porém, renderizando o formulário de cadastro
-            navegarFAQ: function(categoria) {
-                for (cat in this.questionario) {
-                    this.questionario[cat].ativa = false;
-                }
-
-                for (cat in this.questionario) {
-                    if (this.questionario[cat].categoria == categoria) {
-                        this.questionario[cat].ativa = true;
-                    }
-                }
-                setTimeout(function() {
-                    if (window.innerWidth < 481) {
-                        document.querySelector(".perguntas-wrapper").scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, 50);
-
-            }
         }
+    };
+
+    var routes = [
+        { path: "/", name: "Inicio", component: PageInicio },
+        { path: "/BuscaAtendimento", name: "BuscaAtendimento", component: PageBuscaAtendimento },
+        { path: "/FAQ", name: "FAQ", component: PageFAQ },
+    ];
+
+    //Cria instância do VueRouter, que controla a navegação com histórico
+    const router = new VueRouter({
+        routes,
+    });
+
+    console.log("carregou");
+    app = new Vue({
+        el: '#app',
+        data: {
+            //Controla se mostra/esconde o chat
+            chatAtivo: false,
+
+            //Base de dados do sistema de chat
+            chat: chat,
+        },
+
+        methods: {
+            //Insere uma fala no sistema de chat
+            falarChat: function(quem, mensagem, posicao) {
+                var d = new Date();
+                this.chat.push({
+                    autor: quem,
+                    mensagem: mensagem,
+                    datahora: "em " + d.toLocaleDateString() + " às " + d.toLocaleTimeString(),
+                    posicao: posicao
+                });
+                document.querySelector(".msg-chat").value = "";
+
+                app.scrollarChat();
+
+                if (posicao == "eu") {
+                    app.respostaBot();
+                }
+            },
+
+            scrollarChat: function() {
+                setTimeout(function() { //delay necessário para poder dar tempo do vue processar a mensagem e fazer o scroll
+                    var chatbody = document.querySelector(".chat-body").lastChild.lastChild;
+                    chatbody.scrollIntoView({ behavior: 'smooth' });
+                }, 10);
+            },
+
+            //Simula uma resposta do bot
+            respostaBot: function() {
+                var questionario = PageFAQ.data().questionario;
+                setTimeout(function() {
+                    var ultimaMensagem = this.chat[this.chat.length - 1].mensagem.toLowerCase();
+                    var resposta = "";
+                    for (i = 0; i < questionario.length; i++) {
+                        var questoesLength = 0;
+                        try {
+                            questoesLength = questionario[i].questoes.length;
+                        } catch (e) {
+                            questoesLength = 0;
+                        }
+                        for (j = 0; j < questoesLength; j++) {
+                            if (questionario[i].questoes[j].titulo.toLowerCase() == ultimaMensagem) {
+                                resposta = questionario[i].questoes[j].conteudo;
+                            }
+                        }
+                    }
+                    if (resposta !== "") {
+                        app.falarChat("Sistema", resposta, "oposto");
+                    } else {
+                        app.falarChat("Sistema", "Desculpe, não entendi o que você quis dizer. Tente outra mensagem.", "oposto");
+                    }
+                }, 300);
+            },
+
+            //Mostra/esconde o chat de suporte
+            ativarChat: function() {
+                this.chatAtivo = !this.chatAtivo;
+                if (this.chatAtivo) {
+                    app.scrollarChat();
+                }
+            },
+
+
+        },
+
+        router, //Controla a navegação entre as páginas com VueRouter
     });
 });

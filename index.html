@@ -16,65 +16,66 @@
 <body>
 
     <div id="app">
+        <router-view>
+            <template inline-template id="Inicio">
+				<div class="app-wrapper">
+					<h1 class="titulo-central">Central de Atendimento</h1>
+					<h3 class="subtitulo-central">Olá, sua compra foi feita em:</h3>
+		
+					<div class="navegacao-wrapper">
+						<router-link to="/BuscaAtendimento" class="btn-navegacao-central">
+							<img src="img/online-icon.png" /> Loja Online
+						</router-link>
+						<a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-central">
+							<img src="img/icon-fisica.png" /> Loja Física
+						</a>
+					</div>
+		
+				</div>
+			</template>
 
-        <!-- Página inicial com os links de navegação iniciais -->
-        <div v-if="rotas.Inicio" id="Inicio" class="app-wrapper">
-            <h1 class="titulo-central">Central de Atendimento</h1>
-            <h3 class="subtitulo-central">Olá, sua compra foi feita em:</h3>
+            <!-- Página de Busca Inteligente -->
+            <template inline-template id="BuscaAtendimento">
 
-            <div class="navegacao-wrapper">
-                <a href="javascript:void(0)" v-on:click="navegar('BuscaAtendimento')" class="btn-navegacao-central">
-                    <img src="img/online-icon.png" /> Loja Online
-                </a>
-                <a href="https://www.neoassist.com/" target="_blank" class="btn-navegacao-central">
-                    <img src="img/icon-fisica.png" /> Loja Física
-                </a>
-            </div>
+                <div class="app-wrapper BuscaAtendimento">
+                    <h1 class="titulo-central">Central de Atendimento</h1>
+                    <h3 class="subtitulo-central">Como podemos te ajudar?</h3>
 
-        </div>
+                    <div class="input-search-wrapper">
+                        <input v-on:keyup="pesquisarTopicos($event)" placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
+                        <button type="submit"><img src="img/Search-icon.png" /></button>
+                    </div>
+                    <div class="erro-busca" v-show="this.erroBusca">
+                        Não há resultados para sua busca. Por favor, tente um termo diferente.
+                    </div>
+                    <div class="topicos-suporte">
+                        <h4>Navegue pelos assuntos mais buscados:</h4>
+                        <div class="navegacao-wrapper">
+                            <a @click="navegarFAQ('Cadastro')" href="javascript:void(0)" class="btn-navegacao-atendimento">
+                                <img src="img/cadastro-icon.png" /> Cadastro
+                            </a>
+                            <a @click="navegarFAQ('Entregas')" href="javascript:void(0)" class="btn-navegacao-atendimento">
+                                <img src="img/entrega-icon.png" /> Entrega
+                            </a>
+                            <a @click="navegarFAQ('Trocas')" href="javascript:void(0)" class="btn-navegacao-atendimento">
+                                <img src="img/troca-icon.png" /> Trocas
+                            </a>
+                            <a @click="navegarFAQ('Pedidos')" href="javascript:void(0)" class="btn-navegacao-atendimento">
+                                <img src="img/pedido-icon.png" /> Pedidos
+                            </a>
+                            <a @click="navegarFAQ('Produtos')" href="javascript:void(0)" class="btn-navegacao-atendimento">
+                                <img src="img/produto-icon.png" /> Produtos
+                            </a>
+                        </div>
 
-        <!-- Página de Busca Inteligente -->
-        <div v-cloak v-if="rotas.BuscaAtendimento" id="BuscaAtendimento">
-
-            <div class="app-wrapper">
-                <h1 class="titulo-central">Central de Atendimento</h1>
-                <h3 class="subtitulo-central">Como podemos te ajudar?</h3>
-
-                <div class="input-search-wrapper">
-                    <input v-on:keyup="pesquisarTopicos($event)" placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
-                    <button type="submit"><img src="img/Search-icon.png" /></button>
-                </div>
-                <div class="erro-busca" v-if="erroBusca">
-                    Não há resultados para sua busca. Por favor, tente um termo diferente.
-                </div>
-                <div class="topicos-suporte">
-                    <h4>Navegue pelos assuntos mais buscados:</h4>
-                    <div class="navegacao-wrapper">
-                        <a v-on:click="navegar('FAQ', 'Cadastro')" href="javascript:void(0)" class="btn-navegacao-atendimento">
-                            <img src="img/cadastro-icon.png" /> Cadastro
-                        </a>
-                        <a v-on:click="navegar('FAQ', 'Entregas')" href="javascript:void(0)" class="btn-navegacao-atendimento">
-                            <img src="img/entrega-icon.png" /> Entrega
-                        </a>
-                        <a v-on:click="navegar('FAQ', 'Trocas')" href="javascript:void(0)" class="btn-navegacao-atendimento">
-                            <img src="img/troca-icon.png" /> Trocas
-                        </a>
-                        <a v-on:click="navegar('FAQ', 'Pedidos')" href="javascript:void(0)" class="btn-navegacao-atendimento">
-                            <img src="img/pedido-icon.png" /> Pedidos
-                        </a>
-                        <a v-on:click="navegar('FAQ', 'Produtos')" href="javascript:void(0)" class="btn-navegacao-atendimento">
-                            <img src="img/produto-icon.png" /> Produtos
-                        </a>
                     </div>
 
                 </div>
+            </template>
 
-            </div>
-        </div>
-
-        <!-- Página de FAQ, onde todas as questões são renderizadas -->
-        <div v-cloak v-if="rotas.FAQ" id="FAQ">
-            <div class="app-wrapper">
+            <!-- Página de FAQ, onde todas as questões são renderizadas -->
+            <template inline-template id="FAQ">
+            <div class="app-wrapper FAQ">
                 <h1 class="titulo-central">Central de Atendimento</h1>
                 <div class="faq-wrapper">
                     <div class="faq-menu">
@@ -83,7 +84,7 @@
                             <input v-on:keyup="pesquisarTopicosFAQ($event)" placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
                             <button type="submit"><img src="img/Search-icon.png" /></button>
                         </div>
-                        <div class="erro-busca" v-if="erroBuscaFAQ">
+                        <div class="erro-busca" v-if="this.erroBuscaFAQ">
                             Não há resultados para sua busca. Por favor, tente um termo diferente.
                         </div>
 
@@ -91,13 +92,13 @@
                         <div class="faq-menu-itens">
                             <ul>
                                 <!-- Renderiza o menu de categorias do FAQ -->
-                                <li v-for="categoria in questionario" :key="categoria.categoria" v-if="categoria.visivelFAQ"><a class="categoria-link" href="javascript:void(0)" v-on:click="navegarFAQ(categoria.categoria)">{{categoria.categoria}}</a></li>
+                                <li v-for="categoria in this.questionario" :key="categoria.categoria" v-if="categoria.visivelFAQ"><a class="categoria-link" href="javascript:void(0)" v-on:click="navegarFAQ(categoria.categoria)">{{categoria.categoria}}</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="faq-perguntas">
                         <!-- Renderiza as categorias junto com as questões da base de dados do FAQ -->
-                        <div class="perguntas-wrapper" v-for="categoria in questionario" :key="categoria.categoria" v-if="categoria.ativa">
+                        <div class="perguntas-wrapper" v-for="categoria in this.questionario" :key="categoria.categoria" v-if="categoria.ativa">
 
                             <h2 class="titulo-categoria">{{categoria.categoria}}</h2>
 
@@ -110,7 +111,7 @@
                                 <div class="conteudo-questao">
                                     {{pergunta.conteudo}}
                                     <div class="resposta-util">
-                                        Esta resposta foi útil? <br class="br-mobile" />
+                                        <strong>Esta resposta foi útil?</strong> <br class="br-mobile" />
                                         <a class="resposta-util-sim" href="javascript:void(0)" v-on:click="respostaUtil($event, 'sim')">SIM</a>
                                         <a class="resposta-util-nao" href="javascript:void(0)" v-on:click="respostaUtil($event, 'nao')">NÃO</a>
                                         <div class="msg-feedback-resposta">
@@ -128,10 +129,10 @@
                             </div>
 
                         </div>
-                        <div class="faq-formulario" v-if="questionario[5].ativa">
+                        <div class="faq-formulario" v-if="this.formAtivo">
                             <h3>Preencha os campos abaixo e nos envie um e-mail:</h3>
-                            <form v-if="!sucessoForm" method="GET" v-on:submit="validarForm($event)" class="form-enviar-email">
-                                <label>* Assunto</label>
+                            <form v-if="!this.sucessoForm" method="GET" v-on:submit="validarForm($event)" class="form-enviar-email">
+                                <label class="obrigatorio">Assunto</label>
                                 <select v-model="form.assunto" class="campo-form">
 									<option value="" selected>Selecione um assunto:</option>
 									<option value="Cadastro">Cadastro</option>
@@ -140,44 +141,56 @@
 									<option value="Pedidos">Pedidos</option>
 									<option value="Produtos">Produtos</option>
 								</select>
-                                <div class="error-label" v-if="!form.assunto && podeValidar">O campo assunto é obrigatório!</div>
+                                <div class="error-label" v-show="!this.form.assunto && this.podeValidar">O campo assunto é obrigatório!</div>
 
-                                <label>* Nome</label>
+                                <label class="obrigatorio">Nome</label>
                                 <input type="text" v-model="form.nome" placeholder="Insira seu nome" class="campo-form" />
-                                <div class="error-label" v-if="!form.nome && podeValidar">O campo nome é obrigatório!</div>
+                                <div class="error-label" v-show="!this.form.nome && this.podeValidar">O campo nome é obrigatório!</div>
 
-                                <label>* E-mail</label>
-                                <input type="text" v-model="form.email" placeholder="Insira seu e-mail" class="campo-form" />
-                                <div class="error-label" v-if="!form.email && podeValidar">O campo nome é obrigatório!</div>
+                                <label class="obrigatorio">E-mail</label>
+                                <input type="text" v-model="form.email" v-on:blur="validarEmail()" placeholder="Insira seu e-mail" class="campo-form" />
+                                <div class="error-label" v-show="!this.form.email && this.podeValidar">O campo nome é obrigatório!</div>
+								<div class="error-label" v-show="!this.form.emailValido && this.podeValidar">Por favor, insira um e-mail válido.</div>
 
                                 <label> Anexos</label>
                                 <input type="file" class="campo-form" />
 
-                                <label>* Mensagem</label>
+                                <label class="obrigatorio">Mensagem</label>
                                 <textarea type="text" v-model="form.mensagem" placeholder="Sobre o que deseja falar?" class="campo-form"></textarea>
-                                <div class="error-label" v-if="!form.mensagem && podeValidar">O campo mensagem é obrigatório!</div>
+                                <div class="error-label" v-show="!this.form.mensagem && this.podeValidar">O campo mensagem é obrigatório!</div>
 
-                                <p>* Campos com preenchimento obrigatório</p>
+                                <p class="obrigatorio">Campos com preenchimento obrigatório</p>
                                 <div style="text-align:right;">
                                     <input type="submit" value="ENVIAR FORMULÁRIO" />
                                 </div>
 
                             </form>
-                            <div v-if="sucessoForm" class="msg-sucesso-form">
+                            <div v-if="this.sucessoForm" class="msg-sucesso-form">
                                 <div class="texto-mensagem">
                                     <strong>Seu e-mail foi enviado com sucesso! Seu número de protocolo é {{"x".repeat(6).replace(/x/g,x=>Math.random()*10|0)}}.</strong> Aguarde, em breve entraremos em contato!
                                 </div>
-                                <a href="javascript:void(0)" v-on:click="navegar('Inicio')"><img src="img/icone-caret-left.png" /> RETORNAR À TELA INICIAL</a>
+                                <router-link to="/" href="javascript:void(0)"><img src="img/icone-caret-left.png" /> RETORNAR À TELA INICIAL</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-
+                <div class="contato-links">
+                    <div class="disclaimer-footer">
+                        Caso você queira, você também pode nos enviar um e-mail ou falar com um de nossos atendentes via chat.
+                    </div>
+                    <div class="links-contato-links">
+                        <a href="javascript:void(0)" v-on:click="mostrarForm()"><img src="img/icon-email.png" /></a>
+                        <a href="javascript:void(0)" onClick="app.ativarChat()"><img src="img/icon-chat.png" /></a>
+                    </div>
+                </div>
 
             </div>
-        </div>
+        </template>
+        </router-view>
+
+
+
 
         <div class="logo-neoassist">
             <a href="https://www.neoassist.com/" target="_blank">
@@ -185,15 +198,6 @@
             </a>
         </div>
 
-        <div class="contato-links">
-            <div class="disclaimer-footer">
-                Caso você queira, você também pode nos enviar um e-mail ou falar com um de nossos atendentes via chat.
-            </div>
-            <div class="links-contato-links">
-                <a href="javascript:void(0)" v-on:click="navegar('FAQ');navegarFAQ('Atendimento via e-mail:')"><img src="img/icon-email.png" /></a>
-                <a href="javascript:void(0)" v-on:click="ativarChat"><img src="img/icon-chat.png" /></a>
-            </div>
-        </div>
 
         <div v-cloak class="chat-flutuante" v-if="chatAtivo">
             <div class="chat-wrapper">
@@ -256,7 +260,7 @@
     <!-- Carrega o VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <!-- Plugin de Rotas para VueJS -->
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.2/dist/vue-router.js"></script>
 
     <script src="js/scripts.js?v=1"></script>
 </body>

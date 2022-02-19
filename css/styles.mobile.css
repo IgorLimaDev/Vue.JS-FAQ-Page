@@ -1,12 +1,27 @@
 /* Resolução de telas pequenas (Smartphone) */
 
 @media only screen and (max-width:480px) {
+    div#app {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     .br-mobile {
         display: block;
     }
     .disclaimer-footer,
     .links-contato-links {
         padding: 5px;
+    }
+    .contato-links {
+        display: block;
+    }
+    .links-contato-links {
+        text-align: center;
+        margin: auto;
+        width: 100%;
+    }
+    .links-contato-links a {
+        text-align: center;
     }
     /* Botões de navegação do início */
     a.btn-navegacao-central {
