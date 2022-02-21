@@ -39,7 +39,7 @@
 
                 <div class="app-wrapper BuscaAtendimento">
                     <h1 class="titulo-central">Central de Atendimento</h1>
-                    <h3 class="subtitulo-central">Como podemos te ajudar?</h3>
+                    <h3 class="subtitulo-central titulo-cinza">Como podemos te ajudar?</h3>
 
                     <div class="input-search-wrapper">
                         <input v-on:keyup="pesquisarTopicos($event)" placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
@@ -49,7 +49,7 @@
                         Não há resultados para sua busca. Por favor, tente um termo diferente.
                     </div>
                     <div class="topicos-suporte">
-                        <h4>Navegue pelos assuntos mais buscados:</h4>
+                        <h4 class="titulo-cinza">Navegue pelos assuntos mais buscados:</h4>
                         <div class="navegacao-wrapper">
                             <a @click="navegarFAQ('Cadastro')" href="javascript:void(0)" class="btn-navegacao-atendimento">
                                 <img src="img/cadastro-icon.png" /> Cadastro
@@ -79,7 +79,7 @@
                 <h1 class="titulo-central">Central de Atendimento</h1>
                 <div class="faq-wrapper">
                     <div class="faq-menu">
-                        <h3>Como podemos te ajudar?</h3>
+                        <h3 class="titulo-cinza">Como podemos te ajudar?</h3>
                         <div class="input-search-wrapper">
                             <input v-on:keyup="pesquisarTopicosFAQ($event)" placeholder="Ex.: Como posso acompanhar meu pedido?" type="text" />
                             <button type="submit"><img src="img/Search-icon.png" /></button>
@@ -88,11 +88,11 @@
                             Não há resultados para sua busca. Por favor, tente um termo diferente.
                         </div>
 
-                        <h2>ASSUNTOS MAIS BUSCADOS</h2>
+                        <h2 class="titulo-cinza">ASSUNTOS MAIS BUSCADOS</h2>
                         <div class="faq-menu-itens">
                             <ul>
                                 <!-- Renderiza o menu de categorias do FAQ -->
-                                <li v-for="categoria in this.questionario" :key="categoria.categoria" v-if="categoria.visivelFAQ"><a class="categoria-link" href="javascript:void(0)" v-on:click="navegarFAQ(categoria.categoria)">{{categoria.categoria}}</a></li>
+                                <li v-for="categoria in this.questionario" :key="categoria.categoria" v-if="categoria.visivelFAQ"><a class="categoria-link" href="javascript:void(0)" v-on:click="navegarFAQ(categoria.categoria)" v-bind:class="{ativo: categoria.ativa}">{{categoria.categoria}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                             <!-- Renderiza as questões de determinada categoria -->
                             <div class="questao-wrapper" v-for="pergunta in categoria.questoes" :key="pergunta.titulo">
                                 <div class="menu-wrapper">
-                                    <div v-on:click="toggleQuestao($event)" class="titulo-questao">{{pergunta.titulo}}</div>
+                                    <div v-on:click="toggleQuestao($event)" class="titulo-questao" >{{pergunta.titulo}}</div>
                                 </div>
 
                                 <div class="conteudo-questao">

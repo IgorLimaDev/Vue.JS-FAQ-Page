@@ -18,6 +18,7 @@ body {
 
 #app {
     max-width: 1000px;
+    padding-top: 50px;
     margin: auto;
 }
 
@@ -47,11 +48,11 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .subtitulo-central {
-    font-size: 20px;
+    font-size: 23px;
     text-align: center;
     font-weight: 400;
     margin-top: 50px;
@@ -63,10 +64,14 @@ a.btn-chat {
     position: fixed;
     right: 30px;
     bottom: 30px;
-    background-color: red;
+    background-color: #dc3636;
     padding: 10px;
     border-radius: 100%;
     box-shadow: 2px 2px 4px 2px grey;
+}
+
+a.btn-chat:hover {
+    background-color: #c41740;
 }
 
 .contato-links {
@@ -201,6 +206,7 @@ a.btn-chat {
     border-radius: 20px;
     padding-right: 50px;
     margin-right: -50px;
+    font-size: 20px;
 }
 
 .input-search-wrapper button {
@@ -227,7 +233,7 @@ a.btn-chat {
 .faq-menu {
     width: 35%;
     display: inline-block;
-    margin-right: 40px;
+    margin-right: 50px;
 }
 
 .faq-perguntas {
@@ -240,14 +246,19 @@ a.categoria-link {
     color: white;
     display: block;
     margin: 10px 0px;
-    padding: 15px;
+    padding: 13px 30px;
     border-radius: 10px;
     position: relative;
     text-align: left;
+    font-size: 23px;
 }
 
 a.categoria-link:hover {
     text-decoration: none;
+    background-color: #b42827;
+}
+
+a.categoria-link.ativo {
     background-color: #b42827;
 }
 
@@ -264,7 +275,7 @@ a.categoria-link::after {
     top: 0;
     margin: auto;
     height: 100%;
-    line-height: 43px;
+    line-height: 55px;
 }
 
 .FAQ .input-search-wrapper input {
@@ -307,12 +318,18 @@ a.categoria-link::after {
     text-transform: uppercase;
     font-size: 22px;
     margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.titulo-cinza {
+    color: #6e6e6e;
 }
 
 .titulo-questao {
     font-weight: 500;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .questao-wrapper {
@@ -323,8 +340,8 @@ a.categoria-link::after {
 .titulo-questao:before {
     content: ' ';
     background-image: url(../img/caret-right.png);
-    width: 25px;
-    height: 25px;
+    width: 17px;
+    height: 17px;
     display: inline-block;
     background-size: 100% 100%;
     margin-bottom: -4px;
@@ -340,6 +357,8 @@ a.categoria-link::after {
     max-height: 0px;
     overflow: hidden;
     transition: ease 0.3s;
+    font-size: 14px;
+    padding-left: 24px;
 }
 
 .questao-wrapper.aberto .conteudo-questao {
@@ -503,7 +522,7 @@ form.form-enviar-email {
 }
 
 span.disclaimer-chat {
-    font-size: 8px;
+    font-size: 11px;
     line-height: 15px;
     display: block;
     margin-top: 5px;
@@ -512,8 +531,8 @@ span.disclaimer-chat {
 .disclaimer-chat span {
     border: 1px white solid;
     border-radius: 100%;
-    padding-left: 4px;
-    padding-right: 5px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .chat-body {
