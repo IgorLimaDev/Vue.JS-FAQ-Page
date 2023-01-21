@@ -1,4 +1,4 @@
-<p style="text-align:center;"># TesteNeoAssist</p>
+# TesteNeoAssist
 Aplicação desenvolvida em função do teste NeoAssist
 #
 Tecnologias utilizadas:
