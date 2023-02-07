@@ -1,5 +1,5 @@
-# TesteNeoAssist
-Aplicação desenvolvida em função do teste NeoAssist
+# Vue.JS FAQ Page
+Aplicação FAQ feita com Vue.JS
 #
 Tecnologias utilizadas:
 - HTML;
